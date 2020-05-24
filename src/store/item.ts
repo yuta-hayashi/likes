@@ -8,12 +8,19 @@ import {
 import Item from "@/models/Item";
 import store from "@/store/index";
 
+type newItem = { name: string; imgUrl: string };
 export interface InItemsState {
   items: Item[];
   nextId: number;
 }
 
-@Module({ dynamic: true, store, name: "item", namespaced: true })
+@Module({
+  dynamic: true,
+  store,
+  name: "item",
+  namespaced: true,
+  preserveState: true
+})
 class Items extends VuexModule implements InItemsState {
   items: Item[] = [
     { id: 0, name: "hoge", imgUrl: "goo", createdAt: new Date(), toBuy: false }
@@ -27,11 +34,11 @@ class Items extends VuexModule implements InItemsState {
   }
 
   @Action
-  addItem(name: string, imgUrl: string) {
+  addItem(value: newItem) {
     const newItem: Item = {
       id: this.nextId,
-      name: name,
-      imgUrl: imgUrl,
+      name: value.name,
+      imgUrl: value.imgUrl,
       toBuy: false,
       createdAt: new Date()
     };

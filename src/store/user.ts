@@ -18,7 +18,13 @@ export interface InUserState {
   isSign: boolean;
 }
 
-@Module({ dynamic: true, store, name: "user", namespaced: true })
+@Module({
+  dynamic: true,
+  store,
+  name: "user",
+  namespaced: true,
+  preserveState: true
+})
 class User extends VuexModule implements InUserState {
   uid = "";
   name = "";
