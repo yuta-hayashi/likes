@@ -3,6 +3,7 @@
     <router-link v-for="item in items" :key="item.id" :to="'like/' + item.id">{{
       item.name
     }}</router-link>
+    <router-link to="/add">ADD</router-link>
   </div>
 </template>
 
