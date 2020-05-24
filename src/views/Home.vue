@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    state:{{ items }}
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <router-link v-for="item in items" :key="item.id" :to="'like/' + item.id">{{
+      item.name
+    }}</router-link>
   </div>
 </template>
 
@@ -12,11 +12,7 @@ import { Component, Vue } from "vue-property-decorator";
 import HelloWorld from "@/components/HelloWorld.vue";
 import { itemsModule } from "@/store/item";
 
-@Component({
-  components: {
-    HelloWorld
-  }
-})
+@Component
 export default class Home extends Vue {
   items = itemsModule.items;
 }

@@ -22,7 +22,12 @@ const routes: Array<RouteConfig> = [
   {
     path: "/add",
     name: "Add",
-    component: () => import(/* webpackChunkName: "about" */ "../views/Add.vue")
+    component: () => import(/* webpackChunkName: "add" */ "../views/Add.vue")
+  },
+  {
+    path: "/like/:id",
+    name: "Like",
+    component: () => import(/* webpackChunkName: "like" */ "../views/Like.vue")
   }
 ];
 

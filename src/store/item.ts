@@ -16,13 +16,14 @@ export interface InItemsState {
 @Module({ dynamic: true, store, name: "counter", namespaced: true })
 class Items extends VuexModule implements InItemsState {
   items: Item[] = [
-    { id: 1, name: "hoge", imgUrl: "goo", createdAt: new Date(), toBuy: false }
+    { id: 0, name: "hoge", imgUrl: "goo", createdAt: new Date(), toBuy: false }
   ];
   nextId = 1;
 
   @Mutation
   pushItem(newItem: Item) {
     this.items.push(newItem);
+    this.nextId += 1;
   }
 
   @Action
