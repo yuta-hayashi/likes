@@ -13,7 +13,7 @@ export interface InItemsState {
   nextId: number;
 }
 
-@Module({ dynamic: true, store, name: "counter", namespaced: true })
+@Module({ dynamic: true, store, name: "item", namespaced: true })
 class Items extends VuexModule implements InItemsState {
   items: Item[] = [
     { id: 0, name: "hoge", imgUrl: "goo", createdAt: new Date(), toBuy: false }

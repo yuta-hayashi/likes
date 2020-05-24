@@ -28,6 +28,11 @@ const routes: Array<RouteConfig> = [
     path: "/like/:id",
     name: "Like",
     component: () => import(/* webpackChunkName: "like" */ "../views/Like.vue")
+  },
+  {
+    path: "/signup",
+    name: "SignUp",
+    component: () => import("../views/SignUp.vue")
   }
 ];
 
