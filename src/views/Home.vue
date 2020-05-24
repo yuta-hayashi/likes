@@ -4,6 +4,8 @@
       item.name
     }}</router-link>
     <router-link to="/add">ADD</router-link>
+    {{ userName }}
+    <p v-if="userName != null">name:{{ userName }}</p>
   </div>
 </template>
 
@@ -12,9 +14,13 @@
 import { Component, Vue } from "vue-property-decorator";
 import HelloWorld from "@/components/HelloWorld.vue";
 import { itemsModule } from "@/store/item";
+import { userModule } from "../store/user";
 
 @Component
 export default class Home extends Vue {
   items = itemsModule.items;
+  get userName() {
+    return itemsModule.nextId;
+  }
 }
 </script>

@@ -1,6 +1,7 @@
 <template>
   <div>
     Like Page
+    <img :src="itemObj.imgUrl" />
     {{ itemId }}
     {{ itemObj }}
   </div>
