@@ -33,16 +33,20 @@ export default class AddPage extends Vue {
     file: null
   };
   add() {
-    if (this.newImage.url !== null) {
+    if (this.newImage.url.length !== 0) {
       const storage = firebase.storage().ref();
       const mount = storage.child(`${this.uid}/${this.newImage.name}`);
       mount.putString(this.newImage.url[0], "data_url").then((res) => {
         res.ref.getDownloadURL().then((url) => {
-          itemsModule.addItem({ name: this.newName, imgUrl: url });
+          itemsModule.addItem({
+            name: this.newName,
+            imgUrl: url,
+            uid: this.uid
+          });
         });
       });
     } else {
-      itemsModule.addItem({ name: this.newName, imgUrl: "" });
+      itemsModule.addItem({ name: this.newName, imgUrl: "", uid: this.uid });
     }
     this.$router.push("/");
   }

@@ -7,8 +7,11 @@ import {
 } from "vuex-module-decorators";
 import Item from "@/models/Item";
 import store from "@/store/index";
+import firestore from "@/firebase";
 
-type newItem = { name: string; imgUrl: string };
+const ref = firestore.firestore();
+
+type newItem = { name: string; imgUrl: string; uid: string };
 export interface InItemsState {
   items: Item[];
   nextId: number;
@@ -28,8 +31,18 @@ class Items extends VuexModule implements InItemsState {
   nextId = 1;
 
   @Mutation
-  pushItem(newItem: Item) {
-    this.items.push(newItem);
+  pushItem(value: { newItem: Item; uid: string }) {
+    this.items.push(value.newItem);
+    ref
+      .collection("userData")
+      .doc(value.uid)
+      .collection("items")
+      .doc(value.newItem.id.toString())
+      .set(value.newItem)
+      .then(() => {
+        console.log("add firestore");
+      })
+      .catch((error) => console.error(error));
     this.nextId += 1;
   }
 
@@ -42,7 +55,7 @@ class Items extends VuexModule implements InItemsState {
       toBuy: false,
       createdAt: new Date()
     };
-    this.pushItem(newItem);
+    this.pushItem({ newItem: newItem, uid: value.uid });
   }
 }
 export const itemsModule = getModule(Items);
