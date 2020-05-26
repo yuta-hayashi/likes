@@ -7,9 +7,9 @@ import {
 } from "vuex-module-decorators";
 import Item from "@/models/Item";
 import store from "@/store/index";
-import firestore from "@/firebase";
+import firebase from "@/firebase";
 
-const ref = firestore.firestore();
+const ref = firebase.firestore();
 
 type newItem = { name: string; imgUrl: string; uid: string };
 export interface InItemsState {
