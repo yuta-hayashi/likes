@@ -31,18 +31,8 @@ class Items extends VuexModule implements InItemsState {
   nextId = 1;
 
   @Mutation
-  pushItem(value: { newItem: Item; uid: string }) {
-    this.items.push(value.newItem);
-    ref
-      .collection("userData")
-      .doc(value.uid)
-      .collection("items")
-      .doc(value.newItem.id.toString())
-      .set(value.newItem)
-      .then(() => {
-        console.log("add firestore");
-      })
-      .catch((error) => console.error(error));
+  pushItem(newItem: Item) {
+    this.items.push(newItem);
     this.nextId += 1;
   }
 
@@ -55,7 +45,17 @@ class Items extends VuexModule implements InItemsState {
       toBuy: false,
       createdAt: new Date()
     };
-    this.pushItem({ newItem: newItem, uid: value.uid });
+    ref
+      .collection("userData")
+      .doc(value.uid)
+      .collection("items")
+      .doc(newItem.id.toString())
+      .set(newItem)
+      .then(() => {
+        console.log("add firestore");
+      })
+      .catch((error) => console.error(error));
+    this.pushItem(newItem);
   }
 }
 export const itemsModule = getModule(Items);
