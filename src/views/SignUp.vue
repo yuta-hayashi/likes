@@ -23,7 +23,7 @@ export default class Home extends Vue {
           const name =
             obj.user.displayName === null ? "no name" : obj.user.displayName;
           console.warn("name:", name);
-          userModule.signUp({ uid: obj.user!.uid, name: name });
+          this.$router.push("/");
         }
       })
       .catch((error) => console.error(error.message));
