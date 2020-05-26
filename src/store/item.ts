@@ -21,8 +21,7 @@ export interface InItemsState {
   dynamic: true,
   store,
   name: "item",
-  namespaced: true,
-  preserveState: true
+  namespaced: true
 })
 class Items extends VuexModule implements InItemsState {
   items: Item[] = [

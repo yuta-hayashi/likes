@@ -22,8 +22,7 @@ export interface InUserState {
   dynamic: true,
   store,
   name: "user",
-  namespaced: true,
-  preserveState: true
+  namespaced: true
 })
 class User extends VuexModule implements InUserState {
   uid = "";

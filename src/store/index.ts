@@ -1,6 +1,5 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import createPersistedState from "vuex-persistedstate";
 import { InItemsState } from "@/store/item";
 import { InUserState } from "@/store/user";
 
@@ -11,6 +10,4 @@ export interface InRootState {
   user: InUserState;
 }
 
-export default new Vuex.Store<InRootState>({
-  plugins: [createPersistedState()]
-});
+export default new Vuex.Store<InRootState>({});
