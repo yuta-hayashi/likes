@@ -9,12 +9,11 @@ import Item from "@/models/Item";
 import store from "@/store/index";
 import firebase from "@/firebase";
 
-const ref = firebase.firestore();
+const ref = firebase.firestore().collection("userData");
 
 type newItem = { name: string; imgUrl: string; uid: string };
 export interface InItemsState {
   items: Item[];
-  nextId: number;
 }
 
 @Module({
@@ -24,28 +23,23 @@ export interface InItemsState {
   namespaced: true
 })
 class Items extends VuexModule implements InItemsState {
-  items: Item[] = [
-    { id: 0, name: "hoge", imgUrl: "goo", createdAt: new Date(), toBuy: false }
-  ];
-  nextId = 1;
+  items: Item[] = [];
 
   @Mutation
   pushItem(newItem: Item) {
     this.items.push(newItem);
-    this.nextId += 1;
   }
 
   @Action
   addItem(value: newItem) {
     const newItem: Item = {
-      id: this.nextId,
+      id: this.items.length + 1,
       name: value.name,
       imgUrl: value.imgUrl,
       toBuy: false,
       createdAt: new Date()
     };
     ref
-      .collection("userData")
       .doc(value.uid)
       .collection("items")
       .doc(newItem.id.toString())
@@ -55,6 +49,22 @@ class Items extends VuexModule implements InItemsState {
       })
       .catch((error) => console.error(error));
     this.pushItem(newItem);
+  }
+
+  @Action
+  getFireStore() {
+    console.log(this.context.rootState.user.uid);
+    ref
+      .doc(this.context.rootState.user.uid)
+      .collection("items")
+      .where("id", ">", this.items.length)
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
+          // @ts-ignore
+          this.pushItem(doc.data());
+        });
+      });
   }
 }
 export const itemsModule = getModule(Items);
