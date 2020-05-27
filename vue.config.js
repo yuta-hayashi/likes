@@ -6,13 +6,13 @@ module.exports = {
     workboxOptions: {
       runtimeCaching: [
         {
-          urlPattern: /https:\/\/firebasestorage.googleapis.com\/*/,
+          urlPattern: "https://firebasestorage.googleapis.com/*",
           handler: "networkFirst",
           options: {
             cacheName: "firebase-storage",
             expiration: {
               maxEntries: 30,
-              maxAgeSeconds: 300
+              maxAgeSeconds: 3000
             },
             cacheableResponse: {
               statuses: [0, 200]
