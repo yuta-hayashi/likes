@@ -22,6 +22,7 @@ export default class LikePage extends Vue {
     const item: Item = itemsModule.items.filter((item) => {
       return item.id === this.itemId;
     })[0];
+    if (item == undefined) this.$router.push("/");
     return item;
   }
 }
