@@ -30,6 +30,14 @@ class Items extends VuexModule implements InItemsState {
     this.items.push(newItem);
   }
 
+  @Mutation
+  changeStatus(id: number) {
+    const target = this.items.filter((item) => {
+      return item.id == id;
+    });
+    target[0].toBuy = !target[0].toBuy;
+  }
+
   @Action
   addItem(value: newItem) {
     const newItem: Item = {
@@ -49,6 +57,11 @@ class Items extends VuexModule implements InItemsState {
       })
       .catch((error) => console.error(error));
     this.pushItem(newItem);
+  }
+
+  @Action
+  changeToBuy(id: number) {
+    this.changeStatus(id);
   }
 
   @Action

@@ -2,8 +2,9 @@
   <div>
     Like Page
     <img :src="itemObj.imgUrl" />
-    {{ itemId }}
-    {{ itemObj }}
+    {{ itemObj.toBuy }}
+    <button v-if="itemObj.toBuy" @click="changeToBuy">買った</button>
+    <button v-else @click="changeToBuy">買う</button>
   </div>
 </template>
 
@@ -24,6 +25,9 @@ export default class LikePage extends Vue {
     })[0];
     if (item == undefined) this.$router.push("/");
     return item;
+  }
+  changeToBuy() {
+    itemsModule.changeToBuy(this.itemId);
   }
 }
 </script>
