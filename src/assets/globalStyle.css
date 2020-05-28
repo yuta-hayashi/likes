@@ -25,12 +25,12 @@
     color: #ffff;
 }
 
-.button-primary {
+.button_primary {
     background: var(--primary);
     box-shadow: 0px 2px 10px var(--primary);
 }
 
-.button-secondary {
+.button_secondary {
     background: var(--secondary);
     box-shadow: 0px 2px 10px var(--secondary);
 }

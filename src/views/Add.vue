@@ -3,7 +3,7 @@
     <img :src="newImage.url[0]" />
     <input type="file" ref="image" accept="image/*" @change="imgSelect" />
     <input type="text" placeholder="name" v-model="newName" />
-    <button class="button button-primary" @click="add">追加</button>
+    <button class="button button_primary" @click="add">追加</button>
     uid:{{ uid }}
   </div>
 </template>

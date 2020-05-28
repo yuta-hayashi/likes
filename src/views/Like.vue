@@ -2,11 +2,15 @@
   <div>
     Like Page
     <Card class="card_big" :imgUrl="itemObj.imgUrl" size="big" />
-    {{ itemObj.toBuy }}
-    <button class="button" v-if="itemObj.toBuy" @click="changeToBuy">
+    <span class="item_name">{{ itemObj.name }}</span>
+    <button
+      class="button button_primary"
+      v-if="itemObj.toBuy"
+      @click="changeToBuy"
+    >
       買った
     </button>
-    <button class="button button-secondary" v-else @click="changeToBuy">
+    <button class="button button_secondary" v-else @click="changeToBuy">
       買う
     </button>
   </div>
@@ -44,5 +48,10 @@ export default class LikePage extends Vue {
 <style scoped>
 .card_big {
   margin: 20px auto;
+}
+.item_name {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 50px;
 }
 </style>
