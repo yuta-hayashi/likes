@@ -19,10 +19,6 @@ export default class Home extends Vue {
       .signInWithPopup(provider)
       .then((obj) => {
         if (obj.user !== null) {
-          alert("Create account: " + obj.user.displayName);
-          const name =
-            obj.user.displayName === null ? "no name" : obj.user.displayName;
-          console.warn("name:", name);
           this.$router.push("/");
         }
       })
