@@ -24,7 +24,8 @@ export default class App extends Vue {
       if (user) {
         const name = user.displayName != null ? user.displayName : user.email!;
         const uid = user.uid;
-        userModule.signUp({ name: name, uid: uid });
+        const photoURL = user.photoURL != null ? user.photoURL : "";
+        userModule.signUp({ name: name, uid: uid, photoUrl: photoURL });
       }
     });
   }

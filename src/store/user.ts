@@ -7,14 +7,16 @@ import {
 } from "vuex-module-decorators";
 import store from "@/store/index";
 
-type uidName = {
+type userInfo = {
   uid: string;
   name: string;
+  photoUrl: string;
 };
 
 export interface InUserState {
   uid: string;
   name: string;
+  photoUrl?: string;
   isSign: boolean;
 }
 
@@ -27,12 +29,14 @@ export interface InUserState {
 class User extends VuexModule implements InUserState {
   uid = "";
   name = "";
+  photoUrl = "";
   isSign = false;
 
   @Mutation
-  changeUser(value: uidName) {
+  changeUser(value: userInfo) {
     this.uid = value.uid;
     this.name = value.name;
+    this.photoUrl = value.photoUrl;
     this.isSign = true;
   }
 
@@ -45,7 +49,7 @@ class User extends VuexModule implements InUserState {
   }
 
   @Action
-  signUp(value: uidName) {
+  signUp(value: userInfo) {
     console.log("action's name:", value.name);
     this.changeUser(value);
   }
