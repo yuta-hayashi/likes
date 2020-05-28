@@ -2,7 +2,12 @@
   <div class="home">
     <router-link to="/add">ADD</router-link>
     <div class="card_list">
-      <router-link v-for="item in items" :key="item.id" :to="'like/' + item.id">
+      <router-link
+        class="home_card"
+        v-for="item in items"
+        :key="item.id"
+        :to="'like/' + item.id"
+      >
         <Card :imgUrl="item.imgUrl" :toBuy="item.toBuy" size="small" />
       </router-link>
     </div>
@@ -32,5 +37,8 @@ export default class Home extends Vue {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+.home_card {
+  margin: 20px;
 }
 </style>

@@ -28,7 +28,6 @@ export default class Card extends Vue {
   overflow: hidden;
   position: relative;
   background-color: var(--back);
-  margin: 20px;
   border-radius: 30px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
