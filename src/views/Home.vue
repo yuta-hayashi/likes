@@ -3,7 +3,7 @@
     <router-link to="/add">ADD</router-link>
     <div class="card_list">
       <router-link v-for="item in items" :key="item.id" :to="'like/' + item.id">
-        <Card :imgUrl="item.imgUrl" size="small" />
+        <Card :imgUrl="item.imgUrl" :toBuy="item.toBuy" size="small" />
       </router-link>
     </div>
   </div>

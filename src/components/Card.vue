@@ -1,5 +1,5 @@
 <template>
-  <div class="card" :class="size">
+  <div class="card" :class="[size, { is_to_buy: toBuy }]">
     <img class="card-img" :src="imgUrl" />
   </div>
 </template>
@@ -11,6 +11,7 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 export default class Card extends Vue {
   @Prop() private imgUrl!: string;
   @Prop() private size!: string;
+  @Prop() private toBuy!: boolean;
 }
 </script>
 
@@ -30,6 +31,13 @@ export default class Card extends Vue {
   margin: 20px;
   border-radius: 30px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+.is_to_buy {
+  background-color: var(--primary);
+  box-shadow: 0px 4px 20px rgba(216, 154, 158, 0.9);
+}
+.is_to_buy img {
+  opacity: 60%;
 }
 .card img {
   position: absolute;
