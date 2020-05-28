@@ -10,12 +10,14 @@ import store from "@/store/index";
 type userInfo = {
   uid: string;
   name: string;
+  email: string;
   photoUrl: string;
 };
 
 export interface InUserState {
   uid: string;
   name: string;
+  email: string;
   photoUrl?: string;
   isSign: boolean;
 }
@@ -29,6 +31,7 @@ export interface InUserState {
 class User extends VuexModule implements InUserState {
   uid = "";
   name = "";
+  email = "";
   photoUrl = "";
   isSign = false;
 
@@ -36,16 +39,18 @@ class User extends VuexModule implements InUserState {
   changeUser(value: userInfo) {
     this.uid = value.uid;
     this.name = value.name;
+    this.email = value.email;
     this.photoUrl = value.photoUrl;
     this.isSign = true;
   }
 
   @Mutation
-  logout() {
+  signOut() {
     this.uid = "";
     this.name = "";
+    this.email = "";
+    this.photoUrl = "";
     this.isSign = false;
-    // firebaseの処理
   }
 
   @Action

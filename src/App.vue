@@ -22,10 +22,17 @@ export default class App extends Vue {
   created() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        const name = user.displayName != null ? user.displayName : user.email!;
+        const name =
+          user.displayName != null ? user.displayName : (user.email as string);
+        const email = user.email as string;
         const uid = user.uid;
         const photoURL = user.photoURL != null ? user.photoURL : "";
-        userModule.signUp({ name: name, uid: uid, photoUrl: photoURL });
+        userModule.signUp({
+          name: name,
+          uid: uid,
+          photoUrl: photoURL,
+          email: email
+        });
       }
     });
   }

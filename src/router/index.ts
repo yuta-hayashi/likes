@@ -36,6 +36,11 @@ const routes: Array<RouteConfig> = [
     component: () => import("../views/SignUp.vue")
   },
   {
+    path: "/setting",
+    name: "Setting",
+    component: () => import("../views/Setting.vue")
+  },
+  {
     path: "/*",
     redirect: "/"
   }
@@ -49,7 +54,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   console.log(to.name);
-  if (to.name == "Home" || to.name == "Add" || to.name == "Like") {
+  if (
+    to.name == "Home" ||
+    to.name == "Add" ||
+    to.name == "Like" ||
+    to.name == "Setting"
+  ) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         next();
