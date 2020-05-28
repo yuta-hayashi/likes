@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Header />
     <router-view />
   </div>
 </template>
@@ -14,8 +11,13 @@ import "@/assets/globalStyle.css";
 import { Component, Vue } from "vue-property-decorator";
 import { userModule } from "@/store/user";
 import firebase from "@/firebase";
+import Header from "@/components/Header.vue";
 
-@Component
+@Component({
+  components: {
+    Header
+  }
+})
 export default class App extends Vue {
   created() {
     firebase.auth().onAuthStateChanged((user) => {
