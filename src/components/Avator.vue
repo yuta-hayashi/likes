@@ -7,7 +7,6 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { userModule } from "@/store/user";
-import { persionIcon } from "@/assets/ui/persion.svg";
 
 @Component
 export default class Avator extends Vue {
