@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="signUp">Google Auth</button>
+    <button class="button" @click="signUp">Google Auth</button>
   </div>
 </template>
 

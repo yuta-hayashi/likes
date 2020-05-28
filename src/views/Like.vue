@@ -3,8 +3,12 @@
     Like Page
     <img :src="itemObj.imgUrl" />
     {{ itemObj.toBuy }}
-    <button v-if="itemObj.toBuy" @click="changeToBuy">買った</button>
-    <button v-else @click="changeToBuy">買う</button>
+    <button class="button" v-if="itemObj.toBuy" @click="changeToBuy">
+      買った
+    </button>
+    <button class="button button-secondary" v-else @click="changeToBuy">
+      買う
+    </button>
   </div>
 </template>
 
