@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <router-link to="/add">ADD</router-link>
     <div class="card_list">
       <router-link
         class="home_card"
@@ -10,6 +9,9 @@
       >
         <Card :imgUrl="item.imgUrl" :toBuy="item.toBuy" size="small" />
       </router-link>
+      <router-link class="home_card" to="/add">
+        <Card imgUrl="/plus.png" :toBuy="false" size="small"
+      /></router-link>
     </div>
   </div>
 </template>
@@ -33,10 +35,13 @@ export default class Home extends Vue {
 </script>
 
 <style scoped>
+.home {
+  margin: 0 auto;
+}
 .card_list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
 }
 .home_card {
   margin: 20px;
