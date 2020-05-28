@@ -7,6 +7,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { userModule } from "@/store/user";
+import { persionIcon } from "@/assets/ui/persion.svg";
 
 @Component
 export default class Avator extends Vue {
@@ -16,7 +17,7 @@ export default class Avator extends Vue {
       return userModule.photoUrl;
     } else {
       // デフォルト画像を返す
-      return "no url";
+      return "/person.svg";
     }
   }
 }
@@ -26,5 +27,6 @@ export default class Avator extends Vue {
 .avator_img {
   width: 40px;
   border-radius: 14px;
+  background-color: #ffffff;
 }
 </style>
