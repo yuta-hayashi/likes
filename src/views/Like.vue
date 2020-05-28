@@ -1,7 +1,7 @@
 <template>
   <div>
     Like Page
-    <img :src="itemObj.imgUrl" />
+    <Card class="card_big" :imgUrl="itemObj.imgUrl" size="big" />
     {{ itemObj.toBuy }}
     <button class="button" v-if="itemObj.toBuy" @click="changeToBuy">
       買った
@@ -14,10 +14,15 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import Card from "@/components/Card.vue";
 import { itemsModule } from "@/store/item";
 import Item from "@/models/Item";
 
-@Component
+@Component({
+  components: {
+    Card
+  }
+})
 export default class LikePage extends Vue {
   itemId = 0;
   created() {
@@ -35,3 +40,9 @@ export default class LikePage extends Vue {
   }
 }
 </script>
+
+<style scoped>
+.card_big {
+  margin: 20px auto;
+}
+</style>
