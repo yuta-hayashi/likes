@@ -1,6 +1,7 @@
 <template>
   <div>
     Like Page
+    <BackButton />
     <Card class="card_big" :imgUrl="itemObj.imgUrl" size="big" />
     <span class="item_name">{{ itemObj.name }}</span>
     <button
@@ -21,10 +22,12 @@ import { Component, Vue } from "vue-property-decorator";
 import Card from "@/components/Card.vue";
 import { itemsModule } from "@/store/item";
 import Item from "@/models/Item";
+import BackButton from "@/components/BackButton.vue";
 
 @Component({
   components: {
-    Card
+    Card,
+    BackButton
   }
 })
 export default class LikePage extends Vue {

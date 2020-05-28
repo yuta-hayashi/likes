@@ -1,5 +1,6 @@
 <template>
   <div>
+    <BackButton />
     <img :src="newImage.url[0]" />
     <input type="file" ref="image" accept="image/*" @change="imgSelect" />
     <input type="text" placeholder="name" v-model="newName" />
@@ -14,8 +15,13 @@ import { itemsModule } from "@/store/item";
 import { userModule } from "@/store/user";
 import firebase from "@/firebase";
 import Compressor from "compressorjs";
+import BackButton from "@/components/BackButton.vue";
 
-@Component
+@Component({
+  components: {
+    BackButton
+  }
+})
 export default class AddPage extends Vue {
   newName = "";
   get uid(): string {
