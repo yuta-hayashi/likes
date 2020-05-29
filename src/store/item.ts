@@ -32,11 +32,16 @@ class Items extends VuexModule implements InItemsState {
 
   @Mutation
   changeStatus(id: number) {
-    const target = this.items.filter((item) => {
+    const target = this.items.find((item) => {
       return item.id == id;
     });
-    target[0].toBuy = !target[0].toBuy;
+    if (target) {
+      target.toBuy = !target.toBuy;
+    }
   }
+
+  // @Mutation
+  // deleteItem(id: number) {}
 
   @Action
   addItem(value: newItem) {
