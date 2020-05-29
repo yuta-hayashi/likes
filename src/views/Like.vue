@@ -14,6 +14,10 @@
     <button class="button button_secondary" v-else @click="changeToBuy">
       買う
     </button>
+    <br />
+    <button class="button button_delete" @click="deleteItem">
+      削除
+    </button>
   </div>
 </template>
 
@@ -45,6 +49,10 @@ export default class LikePage extends Vue {
   changeToBuy() {
     itemsModule.changeToBuy(this.itemId);
   }
+  deleteItem() {
+    itemsModule.deleteItem(this.itemId);
+    this.$router.push("/");
+  }
 }
 </script>
 
@@ -56,5 +64,9 @@ export default class LikePage extends Vue {
   display: block;
   font-size: 24px;
   margin-bottom: 50px;
+}
+
+.button_delete {
+  margin-top: 30px;
 }
 </style>

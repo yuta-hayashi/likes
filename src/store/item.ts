@@ -14,6 +14,7 @@ const ref = firebase.firestore().collection("userData");
 type newItem = { name: string; imgUrl: string; uid: string };
 export interface InItemsState {
   items: Item[];
+  nextId: number;
 }
 
 @Module({
@@ -24,6 +25,12 @@ export interface InItemsState {
 })
 class Items extends VuexModule implements InItemsState {
   items: Item[] = [];
+  nextId = 0;
+
+  @Mutation
+  setNextId(id: number) {
+    this.nextId = id + 1;
+  }
 
   @Mutation
   pushItem(newItem: Item) {
@@ -40,8 +47,13 @@ class Items extends VuexModule implements InItemsState {
     }
   }
 
-  // @Mutation
-  // deleteItem(id: number) {}
+  @Mutation
+  deleteElement(id: number) {
+    const target = this.items.findIndex((item) => {
+      return item.id == id;
+    });
+    this.items.splice(target, 1);
+  }
 
   @Action
   addItem(value: newItem) {
@@ -70,17 +82,32 @@ class Items extends VuexModule implements InItemsState {
   }
 
   @Action
+  deleteItem(id: number) {
+    this.deleteElement(id);
+    ref
+      .doc(this.context.rootState.user.uid)
+      .collection("items")
+      .doc(id.toString())
+      .delete()
+      .then(() => console.log("deleted", id))
+      .catch((error) => console.error("firebase error", error));
+  }
+
+  @Action({ rawError: true })
   getFireStore() {
     console.log(this.context.rootState.user.uid);
     ref
       .doc(this.context.rootState.user.uid)
       .collection("items")
-      .where("id", ">", this.items.length)
+      .where("id", ">", this.nextId)
+      .orderBy("id", "asc")
       .get()
       .then((snapshot) => {
         snapshot.forEach((doc) => {
           this.pushItem(doc.data() as Item);
         });
+        const endElm = this.items.slice(-1)[0];
+        this.setNextId(endElm.id);
       });
   }
 }
