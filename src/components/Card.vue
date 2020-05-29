@@ -33,6 +33,7 @@ export default class Card extends Vue {
 }
 .is_to_buy {
   border: solid 2px var(--primary);
+  box-sizing: border-box;
   box-shadow: 0px 4px 20px rgba(216, 154, 158, 0.9);
 }
 .card > .card_img {
