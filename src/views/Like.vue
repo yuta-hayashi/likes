@@ -47,7 +47,7 @@ export default class LikePage extends Vue {
     return item;
   }
   changeToBuy() {
-    itemsModule.changeToBuy(this.itemId);
+    itemsModule.changeToBuy({ id: this.itemId, toBuy: !this.itemObj.toBuy });
   }
   deleteItem() {
     itemsModule.deleteItem(this.itemId);

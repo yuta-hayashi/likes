@@ -12,6 +12,7 @@ import firebase from "@/firebase";
 const ref = firebase.firestore().collection("userData");
 
 type newItem = { name: string; imgUrl: string; uid: string };
+type idState = { id: number; toBuy: boolean };
 export interface InItemsState {
   items: Item[];
   nextId: number;
@@ -38,13 +39,11 @@ class Items extends VuexModule implements InItemsState {
   }
 
   @Mutation
-  changeStatus(id: number) {
+  changeStatus(idState: idState) {
     const target = this.items.find((item) => {
-      return item.id == id;
+      return item.id == idState.id;
     });
-    if (target) {
-      target.toBuy = !target.toBuy;
-    }
+    target!.toBuy = idState.toBuy;
   }
 
   @Mutation
@@ -76,9 +75,18 @@ class Items extends VuexModule implements InItemsState {
     this.pushItem(newItem);
   }
 
-  @Action
-  changeToBuy(id: number) {
-    this.changeStatus(id);
+  @Action({ rawError: true })
+  changeToBuy(idState: idState) {
+    this.changeStatus({ id: idState.id, toBuy: idState.toBuy });
+    ref
+      .doc(this.context.rootState.user.uid)
+      .collection("items")
+      .doc(idState.id.toString())
+      .update({ toBuy: idState.toBuy })
+      .then(() => {
+        console.log("updated");
+      })
+      .catch((error) => console.error(error));
   }
 
   @Action
@@ -95,7 +103,6 @@ class Items extends VuexModule implements InItemsState {
 
   @Action({ rawError: true })
   getFireStore() {
-    console.log(this.context.rootState.user.uid);
     ref
       .doc(this.context.rootState.user.uid)
       .collection("items")
