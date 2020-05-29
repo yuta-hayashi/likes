@@ -32,11 +32,8 @@ export default class Card extends Vue {
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 .is_to_buy {
-  background-color: var(--primary);
+  border: solid 2px var(--primary);
   box-shadow: 0px 4px 20px rgba(216, 154, 158, 0.9);
-}
-.is_to_buy > .card_img {
-  opacity: 60%;
 }
 .card > .card_img {
   position: absolute;
