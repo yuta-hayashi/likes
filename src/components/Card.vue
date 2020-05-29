@@ -17,8 +17,10 @@ export default class Card extends Vue {
 
 <style scoped>
 .small {
-  width: 140px;
-  height: 140px;
+  width: 35vw;
+  height: 35vw;
+  max-width: 140px;
+  max-height: 140px;
 }
 .big {
   width: 270px;

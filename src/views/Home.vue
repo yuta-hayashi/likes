@@ -37,11 +37,18 @@ export default class Home extends Vue {
 <style scoped>
 .home {
   margin: 0 auto;
+  max-width: 550px;
+  display: flex;
+  justify-content: center;
 }
 .card_list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: left;
+  justify-content: space-between;
+}
+.card_list:after {
+  content: "";
+  flex: auto;
 }
 .home_card {
   margin: 20px;
