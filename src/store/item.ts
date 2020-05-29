@@ -58,7 +58,7 @@ class Items extends VuexModule implements InItemsState {
   @Action
   addItem(value: newItem) {
     const newItem: Item = {
-      id: this.items.length + 1,
+      id: this.nextId,
       name: value.name,
       imgUrl: value.imgUrl,
       toBuy: false,
