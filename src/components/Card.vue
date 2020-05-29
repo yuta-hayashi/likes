@@ -1,6 +1,6 @@
 <template>
   <div class="card" :class="[size, { is_to_buy: toBuy }]">
-    <img class="card-img" :src="imgUrl" />
+    <img class="card_img" :src="imgUrl" />
   </div>
 </template>
 
@@ -35,10 +35,10 @@ export default class Card extends Vue {
   background-color: var(--primary);
   box-shadow: 0px 4px 20px rgba(216, 154, 158, 0.9);
 }
-.is_to_buy img {
+.is_to_buy > .card_img {
   opacity: 60%;
 }
-.card img {
+.card > .card_img {
   position: absolute;
   width: 100%;
   height: 100%;
