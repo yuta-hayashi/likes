@@ -86,6 +86,7 @@ export default class AddPage extends Vue {
     } else {
       itemsModule.addItem({ name: this.newName, imgUrl: "", uid: this.uid });
     }
+    this.$analytics.logEvent("add_item");
     this.$router.push("/");
   }
 
