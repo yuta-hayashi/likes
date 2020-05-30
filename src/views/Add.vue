@@ -9,14 +9,16 @@
         accept="image/*"
         @change="imgSelect"
       />
-      <label for="file_select">
-        <Card
-          class="card_big"
-          :imgUrl="newImage.url[newImage.url.length - 1]"
-          size="big"
-          :toBuy="false"
-        />
-      </label>
+      <div class="select_label">
+        <label for="file_select">
+          <Card
+            class="card_big"
+            :imgUrl="newImage.url[newImage.url.length - 1]"
+            size="big"
+            :toBuy="false"
+          />
+        </label>
+      </div>
       <input id="name_input" type="text" placeholder="name" v-model="newName" />
       <br />
       <button
@@ -120,6 +122,10 @@ export default class AddPage extends Vue {
 <style scoped>
 #file_select {
   display: none;
+}
+.select_label {
+  margin: 0 auto;
+  width: 270px;
 }
 .card_big {
   margin: 30px auto;
