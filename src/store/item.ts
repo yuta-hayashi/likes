@@ -10,6 +10,7 @@ import store from "@/store/index";
 import firebase from "@/firebase";
 
 const ref = firebase.firestore().collection("userData");
+const storage = firebase.storage();
 
 type newItem = { name: string; imgUrl: string; uid: string };
 type idState = { id: number; toBuy: boolean };
@@ -47,11 +48,8 @@ class Items extends VuexModule implements InItemsState {
   }
 
   @Mutation
-  deleteElement(id: number) {
-    const target = this.items.findIndex((item) => {
-      return item.id == id;
-    });
-    this.items.splice(target, 1);
+  deleteElement(index: number) {
+    this.items.splice(index, 1);
   }
 
   @Action
@@ -91,7 +89,16 @@ class Items extends VuexModule implements InItemsState {
 
   @Action
   deleteItem(id: number) {
-    this.deleteElement(id);
+    const targetIndex = this.items.findIndex((item) => {
+      return item.id == id;
+    });
+    const url = this.items[targetIndex].imgUrl;
+    storage
+      .refFromURL(url)
+      .delete()
+      .then(() => console.info("deleted"))
+      .catch((error) => console.error(error));
+    this.deleteElement(targetIndex);
     ref
       .doc(this.context.rootState.user.uid)
       .collection("items")
