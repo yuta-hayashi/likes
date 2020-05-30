@@ -12,6 +12,9 @@ import firebase from "@/firebase";
 
 @Component
 export default class Home extends Vue {
+  mounted() {
+    document.title = `Likes- SingUp`;
+  }
   signUp() {
     const provider = new firebase.auth.GoogleAuthProvider();
     firebase

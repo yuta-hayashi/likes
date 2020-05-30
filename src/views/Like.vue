@@ -35,6 +35,9 @@ import BackButton from "@/components/BackButton.vue";
   }
 })
 export default class LikePage extends Vue {
+  mounted() {
+    document.title = `Like - ${this.itemObj.name}`;
+  }
   itemId = 0;
   created() {
     this.itemId = Number(this.$route.params.id);

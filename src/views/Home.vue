@@ -27,6 +27,9 @@ import { userModule } from "../store/user";
   components: { Card }
 })
 export default class Home extends Vue {
+  mounted() {
+    document.title = `Likes`;
+  }
   items = itemsModule.items;
   created() {
     itemsModule.getFireStore();

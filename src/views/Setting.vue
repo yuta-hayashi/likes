@@ -23,6 +23,9 @@ import Avator from "@/components/Avator.vue";
   components: { Avator }
 })
 export default class Setting extends Vue {
+  mounted() {
+    document.title = `Likes - Setting`;
+  }
   get name() {
     return userModule.name;
   }

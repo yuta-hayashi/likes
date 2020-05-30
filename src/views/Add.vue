@@ -50,6 +50,9 @@ const CameraImg =
   }
 })
 export default class AddPage extends Vue {
+  mounted() {
+    document.title = `Like - Add`;
+  }
   newName = "";
   get uid(): string {
     console.log(userModule.isSign);
