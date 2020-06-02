@@ -6,7 +6,7 @@ module.exports = {
     workboxOptions: {
       runtimeCaching: [
         {
-          urlPattern: new RegExp('/.*(?:googleapis)\.com.*$/'),
+          urlPattern: new RegExp("/.*(?:googleapis).com.*$/"),
           handler: "networkFirst",
           options: {
             cacheName: "firebase-storage",
@@ -19,7 +19,8 @@ module.exports = {
             }
           }
         }
-      ]
+      ],
+      exclude: [/_redirects/]
     }
   }
 };
