@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
     <title>Likes</title>
+    <script>
+      console.log(location.host);
+      if (location.host === "likes-memo.netlify.app") {
+        location.href = "https://likes.yuta.run";
+      }
+    </script>
   </head>
   <body>
     <noscript>
@@ -16,12 +22,6 @@
       >
     </noscript>
     <div id="app"></div>
-    <script>
-      console.log(location.host);
-      if (location.host === "likes-memo.netlify.app") {
-        location.href = "https://likes.yuta.run";
-      }
-    </script>
     <!-- built files will be auto injected -->
   </body>
 </html>
