@@ -4,9 +4,10 @@ module.exports = {
     themeColor: "#4DBA87",
     msTileColor: "#000000",
     workboxOptions: {
+      swSrc: "service-worker.js",
       runtimeCaching: [
         {
-          urlPattern: new RegExp('/.*(?:googleapis)\.com.*$/'),
+          urlPattern: new RegExp("/.*(?:googleapis).com.*$/"),
           handler: "networkFirst",
           options: {
             cacheName: "firebase-storage",
@@ -17,7 +18,8 @@ module.exports = {
             cacheableResponse: {
               statuses: [0, 200]
             }
-          }
+          },
+          exclude: [/_redirects/]
         }
       ]
     }
