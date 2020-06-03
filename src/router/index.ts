@@ -26,11 +26,6 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "add" */ "../views/Add.vue")
   },
   {
-    path: "/like/:id",
-    name: "Like",
-    component: () => import(/* webpackChunkName: "like" */ "../views/Like.vue")
-  },
-  {
     path: "/signup",
     name: "SignUp",
     component: () => import("../views/SignUp.vue")
@@ -54,12 +49,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   console.log(to.name);
-  if (
-    to.name == "Home" ||
-    to.name == "Add" ||
-    to.name == "Like" ||
-    to.name == "Setting"
-  ) {
+  if (to.name == "Home" || to.name == "Add" || to.name == "Setting") {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         next();
