@@ -2,16 +2,19 @@
   <div id="header">
     <span id="title">Likes</span>
     <Avator class="avator" />
+    <InstallButton>install</InstallButton>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import Avator from "@/components/Avator.vue";
+import InstallButton from "@/components/InstallButton.vue";
 
 @Component({
   components: {
-    Avator
+    Avator,
+    InstallButton
   }
 })
 export default class Header extends Vue {}
