@@ -12,27 +12,29 @@
 import { Component, Vue } from "vue-property-decorator";
 import { BeforeInstallPromptEvent } from "vue-pwa-install";
 
-@Component({})
+@Component
 export default class InstallButton extends Vue {
-  deferredPrompt: BeforeInstallPromptEvent | null = null;
+  private deferredPrompt: BeforeInstallPromptEvent | null = null;
 
-  promptInstall() {
-    // Show the prompt:
-    this.deferredPrompt!.prompt();
+  private promptInstall() {
+    if (this.deferredPrompt) {
+      // Show the prompt:
+      this.deferredPrompt.prompt();
 
-    // Wait for the user to respond to the prompt:
-    this.deferredPrompt!.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("User accepted the install prompt");
-      } else {
-        console.log("User dismissed the install prompt");
-      }
+      // Wait for the user to respond to the prompt:
+      this.deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the install prompt");
+        } else {
+          console.log("User dismissed the install prompt");
+        }
 
-      this.deferredPrompt = null;
-    });
+        this.deferredPrompt = null;
+      });
+    }
   }
 
-  created() {
+  private created() {
     this.$on("canInstall", (event: BeforeInstallPromptEvent) => {
       // Prevent Chrome 67 and earlier from automatically showing the prompt:
       event.preventDefault();
