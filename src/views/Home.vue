@@ -18,6 +18,7 @@
           <Modal id="mordal" @from-child="closeMordal" :item="currentItem" />
         </div>
       </transition>
+      <InstallButton />
     </div>
   </div>
 </template>
@@ -27,6 +28,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Card from "@/components/Card.vue";
 import Modal from "@/components/Modal.vue";
+import InstallButton from "@/components/InstallButton.vue";
 import { itemsModule } from "@/store/item";
 import { userModule } from "../store/user";
 import Item from "@/models/Item";
@@ -34,7 +36,8 @@ import Item from "@/models/Item";
 @Component({
   components: {
     Card,
-    Modal
+    Modal,
+    InstallButton
   }
 })
 export default class Home extends Vue {
