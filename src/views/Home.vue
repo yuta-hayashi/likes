@@ -18,7 +18,9 @@
           <Modal id="mordal" @from-child="closeMordal" :item="currentItem" />
         </div>
       </transition>
-      <InstallButton />
+      <InstallButton class="home_card">
+        <Card imgUrl="/plus.png" :toBuy="false" size="small" />
+      </InstallButton>
     </div>
   </div>
 </template>

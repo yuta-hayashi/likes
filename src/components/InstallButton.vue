@@ -1,9 +1,7 @@
 <template>
   <div>
-    installButton
-    {{ deferredPrompt }}
     <button v-if="deferredPrompt" @click="promptInstall">
-      Add to home screen
+      <slot></slot>
     </button>
   </div>
 </template>
