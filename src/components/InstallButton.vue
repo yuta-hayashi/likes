@@ -1,5 +1,6 @@
 <template>
   <div>
+    dP:{{ deferredPrompt }}
     <button v-if="deferredPrompt" @click="promptInstall">
       <slot></slot>
     </button>
