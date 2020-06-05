@@ -2,7 +2,7 @@
   <div>
     installButton
     {{ deferredPrompt }}
-    <button v-if="deferredPrompt" @onClick="promptInstall">
+    <button v-if="deferredPrompt" @click="promptInstall">
       Add to home screen
     </button>
   </div>
@@ -17,6 +17,7 @@ export default class InstallButton extends Vue {
   private deferredPrompt: BeforeInstallPromptEvent | null = null;
 
   private promptInstall() {
+    console.log("click promptInstall✌");
     if (this.deferredPrompt) {
       // Show the prompt:
       this.deferredPrompt.prompt();
