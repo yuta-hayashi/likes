@@ -22,11 +22,15 @@
       <input id="name_input" type="text" placeholder="name" v-model="newName" />
       <br />
       <button
+        v-show="!isUploading"
         class="button button_primary"
         @click="add"
         :disabled="!possibleAdd"
       >
         追加
+      </button>
+      <button v-show="isUploading" class="button" disabled="true">
+        記録中
       </button>
     </div>
   </div>
@@ -54,6 +58,7 @@ export default class AddPage extends Vue {
     document.title = `Like - Add`;
   }
   newName = "";
+  isUploading = false;
   get uid(): string {
     console.log(userModule.isSign);
     return userModule.uid;
@@ -73,6 +78,7 @@ export default class AddPage extends Vue {
   };
   add() {
     if (this.newImage.url.length !== 0) {
+      this.isUploading = true;
       const storage = firebase.storage().ref();
       const mount = storage.child(`${this.uid}/${this.newImage.name}`);
       mount
@@ -84,13 +90,13 @@ export default class AddPage extends Vue {
               imgUrl: url,
               uid: this.uid
             });
+            this.$router.push("/");
           });
         });
     } else {
       itemsModule.addItem({ name: this.newName, imgUrl: "", uid: this.uid });
     }
     this.$analytics.logEvent("add_item");
-    this.$router.push("/");
   }
 
   imgSelect(e: any) {
