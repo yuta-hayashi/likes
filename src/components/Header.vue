@@ -1,8 +1,8 @@
 <template>
   <div id="header">
+    <InstallButton class="button_install" />
     <span id="title">Likes</span>
     <Avator class="avator" />
-    <InstallButton>install</InstallButton>
   </div>
 </template>
 
@@ -37,5 +37,9 @@ export default class Header extends Vue {}
   position: absolute;
   right: 0;
   margin: 5px;
+}
+.button_install {
+  position: absolute;
+  left: 5px;
 }
 </style>
