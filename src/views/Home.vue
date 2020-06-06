@@ -122,6 +122,7 @@ export default class Home extends Vue {
   position: absolute;
   bottom: 0;
 }
+
 .message_bar-enter-active {
   animation: SlideDown 0.8s;
 }
@@ -132,10 +133,12 @@ export default class Home extends Vue {
 @keyframes SlideDown {
   0% {
     opacity: 0.2;
+    height: 0px;
     transform: translateY(-20px);
   }
   100% {
     opacity: 1;
+    height: 18px;
     transform: translateY(0px);
   }
 }
@@ -143,10 +146,12 @@ export default class Home extends Vue {
 @keyframes SlideUp {
   0% {
     opacity: 1;
+    height: 18px;
     transform: translateY(0px);
   }
   100% {
     opacity: 0.2;
+    height: 0px;
     transform: translateY(-20px);
   }
 }
