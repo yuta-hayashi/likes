@@ -15,7 +15,7 @@
       /></router-link>
 
       <transition name="modal">
-        <div v-if="isMordal" id="overlay">
+        <div v-if="isMordal" id="overlay" @click.self="closeMordal">
           <Modal id="mordal" @from-child="closeMordal" :item="currentItem" />
         </div>
       </transition>
