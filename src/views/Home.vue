@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <MessageBar v-if="buyNum != ''">買うものが{{ buyNum }}あります</MessageBar>
     <div class="card_list">
       <div
         class="home_card"
@@ -27,6 +28,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import Card from "@/components/Card.vue";
 import Modal from "@/components/Modal.vue";
+import MessageBar from "@/components/MessageBar.vue";
 import { itemsModule } from "@/store/item";
 import { userModule } from "../store/user";
 import Item from "@/models/Item";
@@ -34,7 +36,8 @@ import Item from "@/models/Item";
 @Component({
   components: {
     Card,
-    Modal
+    Modal,
+    MessageBar
   }
 })
 export default class Home extends Vue {
@@ -46,6 +49,18 @@ export default class Home extends Vue {
     toBuy: false,
     createdAt: new Date()
   };
+  get buyNum() {
+    let toBuy = 0;
+    itemsModule.items.forEach((item) => {
+      if (item.toBuy) ++toBuy;
+    });
+    if (toBuy < 10 && toBuy > 0) {
+      return toBuy.toString() + "つ";
+    } else if (toBuy) {
+      return toBuy.toString() + "個";
+    }
+    return "";
+  }
   mounted() {
     document.title = `Likes`;
   }
@@ -69,6 +84,7 @@ export default class Home extends Vue {
   max-width: 550px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 .card_list {
   display: flex;
