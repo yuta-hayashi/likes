@@ -27,8 +27,10 @@ export default class Header extends Vue {}
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed;
+  width: 100%;
   height: 50px;
+  z-index: 2;
 }
 #title {
   font-size: 24px;

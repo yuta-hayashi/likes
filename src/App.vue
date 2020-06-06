@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <router-view />
+    <router-view class="content" />
   </div>
 </template>
 
@@ -38,3 +38,9 @@ export default class App extends Vue {
   }
 }
 </script>
+
+<style>
+.content {
+  padding-top: 50px;
+}
+</style>
