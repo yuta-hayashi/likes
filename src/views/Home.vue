@@ -1,6 +1,10 @@
 <template>
   <div class="home">
-    <MessageBar v-if="buyNum != ''">買うものが{{ buyNum }}あります</MessageBar>
+    <transition name="message_bar">
+      <MessageBar v-show="buyNum != ''"
+        >買うものが{{ buyNum }}あります</MessageBar
+      >
+    </transition>
     <div class="card_list">
       <div
         class="home_card"
@@ -117,6 +121,34 @@ export default class Home extends Vue {
   width: 100%;
   position: absolute;
   bottom: 0;
+}
+.message_bar-enter-active {
+  animation: SlideDown 0.8s;
+}
+.message_bar-leave-active {
+  animation: SlideUp 0.8s;
+}
+
+@keyframes SlideDown {
+  0% {
+    opacity: 0.2;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes SlideUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateY(-20px);
+  }
 }
 
 .modal-enter-active {

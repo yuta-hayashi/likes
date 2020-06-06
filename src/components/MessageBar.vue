@@ -13,7 +13,6 @@ export default class InstallButton extends Vue {}
 .message_bar {
   margin: 10px auto;
   padding: 4px 10px 1px 10px;
-  display: flex;
   background: var(--primary);
   border-radius: 20px;
   color: #ffffff;
