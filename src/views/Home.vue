@@ -75,9 +75,12 @@ export default class Home extends Vue {
   showMordal(item: Item) {
     this.currentItem = item;
     this.isMordal = true;
+    this.$router.push({ hash: item.id.toString() });
   }
   closeMordal() {
+    console.info("close modal");
     this.isMordal = false;
+    if (this.$route.hash != "") this.$router.push("/");
   }
 }
 </script>

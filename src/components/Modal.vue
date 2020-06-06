@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Watch, Prop, Vue } from "vue-property-decorator";
 import Card from "@/components/Card.vue";
 import Item from "@/models/Item";
 import { itemsModule } from "@/store/item";
@@ -42,6 +42,11 @@ export default class Modal extends Vue {
   deleteItem() {
     itemsModule.deleteItem(this.item.id);
     this.$emit("from-child");
+  }
+
+  @Watch("$route", { immediate: false, deep: true })
+  onUrlChange(route: any) {
+    if (route.hash === "") this.close();
   }
 }
 </script>
