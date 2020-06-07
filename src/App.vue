@@ -41,6 +41,6 @@ export default class App extends Vue {
 
 <style>
 .content {
-  padding-top: 50px;
+  padding-top: 55px;
 }
 </style>
