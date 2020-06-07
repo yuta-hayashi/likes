@@ -5,6 +5,9 @@
         >買うものが{{ buyNum }}あります</MessageBar
       >
     </transition>
+    <div v-if="isLoading" class="card_list">
+      <SkeletonCard v-for="n in 3" :key="n" class="home_card" />
+    </div>
     <div class="card_list">
       <div
         class="home_card"
@@ -33,6 +36,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Card from "@/components/Card.vue";
 import Modal from "@/components/Modal.vue";
 import MessageBar from "@/components/MessageBar.vue";
+import SkeletonCard from "@/components/SkeletonCard.vue";
 import { itemsModule } from "@/store/item";
 import { userModule } from "../store/user";
 import Item from "@/models/Item";
@@ -41,11 +45,13 @@ import Item from "@/models/Item";
   components: {
     Card,
     Modal,
-    MessageBar
+    MessageBar,
+    SkeletonCard
   }
 })
 export default class Home extends Vue {
   isMordal = false;
+  items = itemsModule.items;
   currentItem: Item = {
     id: 0,
     name: "",
@@ -53,6 +59,9 @@ export default class Home extends Vue {
     toBuy: false,
     createdAt: new Date()
   };
+  get isLoading() {
+    return itemsModule.isLoading;
+  }
   get buyNum() {
     let toBuy = 0;
     itemsModule.items.forEach((item) => {
@@ -68,7 +77,6 @@ export default class Home extends Vue {
   mounted() {
     document.title = `Likes`;
   }
-  items = itemsModule.items;
   created() {
     itemsModule.getFireStore();
   }

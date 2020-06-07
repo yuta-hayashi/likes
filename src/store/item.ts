@@ -28,6 +28,7 @@ export interface InItemsState {
 class Items extends VuexModule implements InItemsState {
   items: Item[] = [];
   nextId = 0;
+  isLoading = true;
 
   @Mutation
   setNextId(id: number) {
@@ -50,6 +51,11 @@ class Items extends VuexModule implements InItemsState {
   @Mutation
   deleteElement(index: number) {
     this.items.splice(index, 1);
+  }
+
+  @Mutation
+  changeLoading() {
+    this.isLoading = !this.isLoading;
   }
 
   @Action
@@ -122,6 +128,7 @@ class Items extends VuexModule implements InItemsState {
         });
         const endElm = this.items.slice(-1)[0];
         this.setNextId(endElm.id);
+        this.changeLoading();
       });
   }
 }
