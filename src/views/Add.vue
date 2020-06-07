@@ -149,6 +149,7 @@ export default class AddPage extends Vue {
   font-weight: lighter;
   border-radius: 16px;
   border-color: #00000000;
+  -webkit-appearance: none;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2);
 }
 #name_input:focus {
