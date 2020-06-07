@@ -55,7 +55,7 @@ class Items extends VuexModule implements InItemsState {
 
   @Mutation
   changeLoading() {
-    this.isLoading = !this.isLoading;
+    this.isLoading = false;
   }
 
   @Action
