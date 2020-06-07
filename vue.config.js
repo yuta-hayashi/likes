@@ -1,8 +1,12 @@
 module.exports = {
   pwa: {
     name: "Likes",
-    themeColor: "#4DBA87",
-    msTileColor: "#000000",
+    themeColor: "#D89A9E",
+    msTileColor: "#D89A9E",
+    manifestOptions: {
+      // eslint-disable-next-line @typescript-eslint/camelcase
+      background_color: "#F6F4F3"
+    },
     workboxOptions: {
       runtimeCaching: [
         {
