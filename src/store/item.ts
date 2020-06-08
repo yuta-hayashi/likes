@@ -10,7 +10,7 @@ import store from "@/store/index";
 import firebase from "@/firebase";
 
 const ref = firebase.firestore().collection("userData");
-const storage = firebase.storage();
+const storage = firebase.storage;
 
 type newItem = { name: string; imgUrl: string; uid: string };
 type idState = { id: number; toBuy: boolean };
@@ -99,7 +99,7 @@ class Items extends VuexModule implements InItemsState {
       return item.id == id;
     });
     const url = this.items[targetIndex].imgUrl;
-    storage
+    storage()
       .refFromURL(url)
       .delete()
       .then(() => console.info("deleted"))

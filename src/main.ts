@@ -3,7 +3,7 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
-import firebase from "firebase";
+import firebase from "@/firebase";
 import VuePwaInstallPlugin from "vue-pwa-install";
 
 Vue.use(VuePwaInstallPlugin);
