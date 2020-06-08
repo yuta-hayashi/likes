@@ -1,3 +1,6 @@
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const isProd = process.env.NODE_ENV === "production";
+
 module.exports = {
   pwa: {
     name: "Likes",
@@ -25,6 +28,22 @@ module.exports = {
         }
       ],
       exclude: [/_redirects/]
+    }
+  },
+  configureWebpack: {
+    optimization: {
+      minimizer: isProd
+        ? [
+            new UglifyJsPlugin({
+              uglifyOptions: {
+                compress: {
+                  // eslint-disable-next-line @typescript-eslint/camelcase
+                  drop_console: true
+                }
+              }
+            })
+          ]
+        : []
     }
   }
 };
