@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/camelcase */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const isProd = process.env.NODE_ENV === "production";
 
@@ -7,8 +9,17 @@ module.exports = {
     themeColor: "#D89A9E",
     msTileColor: "#D89A9E",
     manifestOptions: {
-      // eslint-disable-next-line @typescript-eslint/camelcase
-      background_color: "#F6F4F3"
+      background_color: "#F6F4F3",
+      scope: "/",
+      shortcuts: [
+        {
+          name: "Add Item",
+          short_name: "Add Item",
+          description: "Add new item.",
+          url: "/add?utm_source=homescreen",
+          icons: [{ src: "/img/icons/add_icon.png", sizes: "192x192" }]
+        }
+      ]
     },
     workboxOptions: {
       runtimeCaching: [
