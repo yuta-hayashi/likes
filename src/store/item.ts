@@ -126,8 +126,10 @@ class Items extends VuexModule implements InItemsState {
         snapshot.forEach((doc) => {
           this.pushItem(doc.data() as Item);
         });
-        const endElm = this.items.slice(-1)[0];
+        if(this.items.length!=0){
+          const endElm = this.items.slice(-1)[0];
         this.setNextId(endElm.id);
+        }
         this.changeLoading();
       });
   }

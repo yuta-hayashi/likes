@@ -19,7 +19,7 @@
           />
         </label>
       </div>
-      <input id="name_input" type="text" placeholder="name" v-model="newName" />
+      <input class="input" type="text" placeholder="name" v-model="newName" />
       <br />
       <button
         v-show="!isUploading"
@@ -139,20 +139,5 @@ export default class AddPage extends Vue {
 }
 .card_big {
   margin: 30px auto;
-}
-
-#name_input {
-  width: 240px;
-  padding: 10px 15px;
-  margin: 30px auto;
-  font-size: 18px;
-  font-weight: lighter;
-  border-radius: 16px;
-  border-color: #00000000;
-  -webkit-appearance: none;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2);
-}
-#name_input:focus {
-  outline: none;
 }
 </style>
