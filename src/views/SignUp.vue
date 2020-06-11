@@ -5,8 +5,10 @@
     <hr>
     <input type="text" class="input" placeholder="Mail" v-model="email">
     <input type="password" class="input" placeholder="Password" v-model="password">
-    <button class="button" @click="signUpMail">新規登録</button>
-    <button class="button" @click="signInMail">ログイン</button>
+    <button class="button button_primary" @click="signUpMail">新規登録</button>
+    <button class="button button_secondary" @click="signInMail">ログイン</button>
+
+    <button @click="$router.push('/about')" class="button ">このアプリについて</button>
   </div>
 </template>
 
