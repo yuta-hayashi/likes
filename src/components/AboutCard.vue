@@ -29,14 +29,14 @@ export default class AboutCard extends Vue {
   height: auto;
 }
 .about_title {
-  margin-top: 4em;
+  margin-top: 2em;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 1.2em;
 }
 .about_body {
   white-space: pre-wrap;
   line-height: 1.5em;
-  font-size: 18px;
+  font-size: 1em;
   height: 5em;
 }
 .about_img_container {

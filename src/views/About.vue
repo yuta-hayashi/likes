@@ -14,6 +14,7 @@
         v-model="currentId"
         class="about_location"
         :key="i"
+        disabled
       />
     </div>
     <div class="about_navi">
@@ -73,7 +74,7 @@ export default class AboutPage extends Vue {
 
 <style scoped>
 .about {
-  padding: 100px 0px;
+  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -84,13 +85,15 @@ export default class AboutPage extends Vue {
 }
 .about_navi_left {
   position: absolute;
-  margin: 0 0 2em 2em;
+  margin-left: 2em;
+  bottom: 2em;
   left: 0;
   color: #c4c4c4;
 }
 .about_navi_right {
   position: absolute;
-  margin: 0 2em 2em 0;
+  margin-right: 2em;
+  bottom: 2em;
   right: 0;
   color: var(--primary);
 }
