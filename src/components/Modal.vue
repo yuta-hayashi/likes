@@ -1,6 +1,9 @@
 <template>
   <div id="modal_content">
     <img class="back_button" src="../assets/ui/BackButton.svg" @click="close" />
+    <button class="button button_delete right" @click="deleteItem">
+      削除
+    </button>
     <Card class="card_big" :imgUrl="item.imgUrl" size="big" />
     <span class="item_name">{{ item.name }}</span>
     <button
@@ -14,9 +17,6 @@
       買う
     </button>
     <br />
-    <button class="button button_delete" @click="deleteItem">
-      削除
-    </button>
   </div>
 </template>
 
@@ -68,5 +68,10 @@ export default class Modal extends Vue {
   position: absolute;
   left: 0;
   margin: 10px auto 0px 10px;
+}
+.right{
+  position:absolute;
+  right: 0;
+  margin: 15px 10px 0px auto;
 }
 </style>
