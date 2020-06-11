@@ -6,12 +6,13 @@
       <AboutCard :content="aboutContents[3]" />
       <AboutCard :content="aboutContents[4]" />
     </div>
-    <div class="about_location">
+    <div class="about_locations">
       <input
         v-for="i in 4"
         type="radio"
         :value="i"
         v-model="currentId"
+        class="about_location"
         :key="i"
       />
     </div>
@@ -70,7 +71,7 @@ export default class AboutPage extends Vue {
 }
 </script>
 
-<style>
+<style scoped>
 .about {
   padding: 100px 0px;
   display: flex;
@@ -99,15 +100,15 @@ export default class AboutPage extends Vue {
   width: 100%;
   transition: transform 0.5s;
 }
-.about_location {
+.about_locations {
   display: flex;
   margin: 1em auto;
 }
-input {
+.about_locations > input {
   visibility: hidden;
   margin: 2px;
 }
-input[type="radio"]:after {
+.about_location:after {
   width: 10px;
   height: 10px;
   border-radius: 10px;
@@ -120,7 +121,7 @@ input[type="radio"]:after {
   visibility: visible;
 }
 
-input[type="radio"]:checked:after {
+.about_location:checked:after {
   width: 10px;
   height: 10px;
   border-radius: 10px;
