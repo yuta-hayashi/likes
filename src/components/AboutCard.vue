@@ -1,6 +1,7 @@
 <template>
   <div class="about_card">
     <div class="about_img_container">
+      <div class="about_back about_back2"></div>
       <div class="about_back"></div>
       <img class="about_img" :src="content.imgUrl" />
     </div>
@@ -54,22 +55,30 @@ export default class AboutCard extends Vue {
   top: 0;
   position: absolute;
   z-index: -1;
-  border-radius: 30% 70% 45% 55% / 60% 60% 40% 40%;
+  border-radius: 50% 50% 42% 58% / 52% 50% 50% 48% ;
   animation: morph 8s ease-in-out infinite;
   background: var(--back);
   width: 100%;
   height: 105%;
+  opacity: 0.8;
 }
+.about_back2{
+  animation: morph 10s ease-in-out infinite;
+  background:var(--primary);
+  width:105%;
+  height: 108%;
+  opacity: 0.6;
+  }
 
 @keyframes morph {
   0% {
-    border-radius: 30% 70% 45% 55% / 60% 60% 40% 40%;
+    border-radius:50% 50% 42% 58% / 52% 50% 50% 48% ;
   }
   50% {
-    border-radius: 79% 21% 64% 36% / 62% 26% 74% 38%;
+    border-radius:64% 36% 57% 43% / 30% 64% 36% 70%  ;
   }
   100% {
-    border-radius: 30% 70% 45% 55% / 60% 60% 40% 40%;
+    border-radius: 50% 50% 42% 58% / 52% 50% 50% 48% ;
   }
 }
 </style>
