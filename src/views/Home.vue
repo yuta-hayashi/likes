@@ -104,7 +104,7 @@ export default class Home extends Vue {
 .card_list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 .card_list:after {
   content: "";
