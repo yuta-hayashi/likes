@@ -79,22 +79,20 @@ export default class AboutPage extends Vue {
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
+  margin: 0 auto;
+  max-width: 550px;
+  justify-content: center;
 }
 .about_navi {
+  margin:0em 2em;
   font-size: 18px;
+  display: flex;
+  justify-content: space-between;
 }
 .about_navi_left {
-  position: absolute;
-  margin-left: 2em;
-  bottom: 2em;
-  left: 0;
   color: #c4c4c4;
 }
 .about_navi_right {
-  position: absolute;
-  margin-right: 2em;
-  bottom: 2em;
-  right: 0;
   color: var(--primary);
 }
 
