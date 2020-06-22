@@ -1,7 +1,7 @@
 <template>
   <div id="header">
     <InstallButton class="button_install" />
-    <span id="title">Likes</span>
+    <router-link to="/"> <span id="title">Likes</span></router-link>
     <Avator class="avator" />
   </div>
 </template>
@@ -23,7 +23,6 @@ export default class Header extends Vue {}
 <style scoped>
 #header {
   background-color: var(--back);
-  color: var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,8 +31,12 @@ export default class Header extends Vue {}
   height: 50px;
   z-index: 2;
 }
+a {
+  text-decoration: none;
+}
 #title {
   font-size: 24px;
+  color: var(--primary);
 }
 .avator {
   position: absolute;
