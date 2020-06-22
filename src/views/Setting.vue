@@ -9,9 +9,18 @@
     </div>
     <button class="button" @click="signOut">Sign Out</button>
     <div class="link_list">
-      <router-link to="/about" class="link_item">このアプリについて</router-link>
-      <a href="https://github.com/yuta-hayashi/likes" target="_blank" class="link_item">GitHub</a>
-      <a href="https://yuta.run" target="_blank" class="link_item">Made by yuta.run</a>
+      <router-link to="/about" class="link_item"
+        >このアプリについて</router-link
+      >
+      <a
+        href="https://github.com/yuta-hayashi/likes"
+        target="_blank"
+        class="link_item"
+        >GitHub</a
+      >
+      <a href="https://yuta.run" target="_blank" class="link_item"
+        >Made by yuta.run</a
+      >
     </div>
   </div>
 </template>
@@ -19,7 +28,7 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { userModule } from "../store/user";
-import firebase, { auth } from "firebase";
+import firebase from "@/firebase";
 import Avator from "@/components/Avator.vue";
 
 @Component({
@@ -65,18 +74,18 @@ export default class Setting extends Vue {
 .name {
   font-size: 1.2em;
 }
-.link_list{
+.link_list {
   text-align: left;
   margin-top: 2em;
   display: flex;
   flex-direction: column;
   border-top: solid 2px #c4c4c4;
 }
-.link_item{
+.link_item {
   padding: 1em;
-  border-bottom:solid 2px #c4c4c4;
+  border-bottom: solid 2px #c4c4c4;
 }
-a{
+a {
   text-decoration: none;
   color: #000;
 }
