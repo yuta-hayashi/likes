@@ -9,12 +9,7 @@
       <SkeletonCard v-for="n in 3" :key="n" class="home_card" />
     </div>
     <div class="card_list">
-      <div
-        class="home_card"
-        v-for="item in items"
-        :key="item.id"
-        @click="showMordal(item)"
-      >
+      <div v-for="item in items" :key="item.id" @click="showMordal(item)">
         <Card :imgUrl="item.imgUrl" :toBuy="item.toBuy" size="small" />
       </div>
       <router-link class="home_card" to="/add">
@@ -102,16 +97,12 @@ export default class Home extends Vue {
   flex-direction: column;
 }
 .card_list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-.card_list:after {
-  content: "";
-  flex: auto;
-}
-.home_card {
-  margin: 20px;
+  display: grid;
+  justify-items: center;
+  column-gap: 1em;
+  row-gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  margin-top: 1em;
 }
 #overlay {
   z-index: 1;
