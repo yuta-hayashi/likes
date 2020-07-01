@@ -1,15 +1,15 @@
 <template>
-  <AboutTemp />
+  <AboutView />
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import AboutTemp from "@/components/templates/AboutTemp.vue";
+import AboutView from "@/components/organisms/AboutView.vue";
 
 @Component({
   components: {
-    AboutTemp
+    AboutView
   }
 })
-export default class AboutPage extends Vue {}
+export default class AboutTemp extends Vue {}
 </script>

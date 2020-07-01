@@ -30,7 +30,7 @@ export default class AboutCard extends Vue {
   height: auto;
 }
 .about_title {
-  margin-top: 2em;
+  margin-top: 3em;
   font-weight: bold;
   font-size: 1.2em;
 }
@@ -55,30 +55,30 @@ export default class AboutCard extends Vue {
   top: 0;
   position: absolute;
   z-index: -1;
-  border-radius: 50% 50% 42% 58% / 52% 50% 50% 48% ;
+  border-radius: 50% 50% 42% 58% / 52% 50% 50% 48%;
   animation: morph 8s ease-in-out infinite;
   background: var(--back);
   width: 100%;
   height: 105%;
   opacity: 0.8;
 }
-.about_back2{
+.about_back2 {
   animation: morph 10s ease-in-out infinite;
-  background:var(--primary);
-  width:105%;
+  background: var(--primary);
+  width: 105%;
   height: 108%;
   opacity: 0.6;
-  }
+}
 
 @keyframes morph {
   0% {
-    border-radius:50% 50% 42% 58% / 52% 50% 50% 48% ;
+    border-radius: 50% 50% 42% 58% / 52% 50% 50% 48%;
   }
   50% {
-    border-radius:64% 36% 57% 43% / 30% 64% 36% 70%  ;
+    border-radius: 64% 36% 57% 43% / 30% 64% 36% 70%;
   }
   100% {
-    border-radius: 50% 50% 42% 58% / 52% 50% 50% 48% ;
+    border-radius: 50% 50% 42% 58% / 52% 50% 50% 48%;
   }
 }
 </style>
