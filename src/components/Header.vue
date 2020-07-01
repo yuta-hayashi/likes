@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import Avator from "@/components/Avator.vue";
+import Avator from "@/components/atoms/Avator.vue";
 import InstallButton from "@/components/InstallButton.vue";
 
 @Component({

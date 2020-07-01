@@ -1,7 +1,5 @@
 <template>
-  <router-link to="/setting">
-    <img class="avator_img" :src="photoUrl" />
-  </router-link>
+  <img class="avator_img" :src="photoUrl" />
 </template>
 
 <script lang="ts">
