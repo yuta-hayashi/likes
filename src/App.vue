@@ -11,7 +11,7 @@ import "@/assets/globalStyle.css";
 import { Component, Vue } from "vue-property-decorator";
 import { userModule } from "@/store/user";
 import firebase from "@/firebase";
-import Header from "@/components/Header.vue";
+import Header from "@/components/organisms/Header.vue";
 
 @Component({
   components: {
