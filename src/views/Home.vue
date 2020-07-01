@@ -28,7 +28,7 @@
 <script lang="ts">
 // @ is an alias to /src
 import { Component, Vue } from "vue-property-decorator";
-import Card from "@/components/Card.vue";
+import Card from "@/components/atoms/Card.vue";
 import Modal from "@/components/Modal.vue";
 import MessageBar from "@/components/MessageBar.vue";
 import SkeletonCard from "@/components/SkeletonCard.vue";

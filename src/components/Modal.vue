@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import { Component, Watch, Prop, Vue } from "vue-property-decorator";
-import Card from "@/components/Card.vue";
+import Card from "@/components/atoms/Card.vue";
 import Item from "@/models/Item";
 import { itemsModule } from "@/store/item";
 
@@ -69,8 +69,8 @@ export default class Modal extends Vue {
   left: 0;
   margin: 10px auto 0px 10px;
 }
-.right{
-  position:absolute;
+.right {
+  position: absolute;
   right: 0;
   margin: 15px 10px 0px auto;
 }
