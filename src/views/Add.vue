@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BackButton />
+    <BackButton @push="$router.push('/')" />
     <div class="input_form">
       <input
         id="file_select"
