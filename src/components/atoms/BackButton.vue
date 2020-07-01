@@ -2,8 +2,8 @@
   <div>
     <img
       class="back_button"
-      src="../assets/ui/BackButton.svg"
-      @click="$router.push('/')"
+      src="../../assets/ui/BackButton.svg"
+      @click="emit"
     />
   </div>
 </template>
@@ -12,7 +12,11 @@
 import { Component, Vue } from "vue-property-decorator";
 
 @Component
-export default class BackButton extends Vue {}
+export default class BackButton extends Vue {
+  emit() {
+    this.$emit("push");
+  }
+}
 </script>
 
 <style scoped>

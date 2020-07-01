@@ -29,7 +29,7 @@
 // @ is an alias to /src
 import { Component, Vue } from "vue-property-decorator";
 import Card from "@/components/atoms/Card.vue";
-import Modal from "@/components/Modal.vue";
+import Modal from "@/components/organisms/Modal.vue";
 import MessageBar from "@/components/MessageBar.vue";
 import SkeletonCard from "@/components/SkeletonCard.vue";
 import { itemsModule } from "@/store/item";

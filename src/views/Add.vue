@@ -42,7 +42,7 @@ import { itemsModule } from "@/store/item";
 import { userModule } from "@/store/user";
 import firebase from "@/firebase";
 import Compressor from "compressorjs";
-import BackButton from "@/components/BackButton.vue";
+import BackButton from "@/components/atoms/BackButton.vue";
 import Card from "@/components/atoms/Card.vue";
 
 const CameraImg =
