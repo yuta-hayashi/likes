@@ -1,10 +1,8 @@
 <template>
   <div class="home">
-    <transition name="message_bar">
-      <MessageBar v-show="buyNum != ''"
-        >買うものが{{ buyNum }}あります</MessageBar
-      >
-    </transition>
+    <MessageBar v-show="buyNum != ''"
+      >買うものが{{ buyNum }}あります</MessageBar
+    >
     <div v-if="isLoading" class="card_list">
       <SkeletonCard v-for="n in 3" :key="n" class="home_card" />
     </div>
@@ -30,10 +28,9 @@
 import { Component, Vue } from "vue-property-decorator";
 import Card from "@/components/atoms/Card.vue";
 import Modal from "@/components/organisms/Modal.vue";
-import MessageBar from "@/components/MessageBar.vue";
+import MessageBar from "@/components/atoms/MessageBar.vue";
 import SkeletonCard from "@/components/SkeletonCard.vue";
 import { itemsModule } from "@/store/item";
-import { userModule } from "../store/user";
 import Item from "@/models/Item";
 
 @Component({

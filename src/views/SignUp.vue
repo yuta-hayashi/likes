@@ -1,6 +1,6 @@
 <template>
   <div id="signUpForm">
-    <MessageBar v-if="message != ''">{{ message }}</MessageBar>
+    <MessageBar v-show="message != ''">{{ message }}</MessageBar>
     <button class="button" @click="signUpGoogle">Googleでログイン</button>
     <hr />
     <input type="text" class="input" placeholder="Mail" v-model="email" />
@@ -31,7 +31,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import { userModule } from "@/store/user";
 import firebase from "@/firebase";
-import MessageBar from "@/components/MessageBar.vue";
+import MessageBar from "@/components/atoms/MessageBar.vue";
 
 @Component({
   components: {
