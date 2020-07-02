@@ -29,7 +29,7 @@ import { Component, Vue } from "vue-property-decorator";
 import Card from "@/components/atoms/Card.vue";
 import Modal from "@/components/organisms/Modal.vue";
 import MessageBar from "@/components/atoms/MessageBar.vue";
-import SkeletonCard from "@/components/SkeletonCard.vue";
+import SkeletonCard from "@/components/atoms/SkeletonCard.vue";
 import { itemsModule } from "@/store/item";
 import Item from "@/models/Item";
 
