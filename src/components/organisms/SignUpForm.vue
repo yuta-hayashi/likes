@@ -1,8 +1,8 @@
 <template>
   <div id="signUpForm">
-    <RadiusButton @push="signUpGoogle">Googleでログイン</RadiusButton>
+    <RadiusButton @push="signUpGoogle">Googleで認証</RadiusButton>
     <MessageBar v-show="message != ''">{{ message }}</MessageBar>
-    <p>メールアドレスで登録</p>
+    <p class="sub_title">メールアドレスで認証</p>
     <input type="text" class="input" placeholder="Mail" v-model="email" />
     <input
       type="password"
@@ -99,5 +99,9 @@ export default class SignUpForm extends Vue {
 }
 .login {
   margin-right: 2em;
+}
+.sub_title {
+  margin-top: 2em;
+  margin-bottom: -1em;
 }
 </style>
