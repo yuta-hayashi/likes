@@ -57,6 +57,14 @@ router.beforeEach((to, from, next) => {
         next("/signup");
       }
     });
+  } else if (to.name == "SignUp") {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        next("/");
+      } else {
+        next();
+      }
+    });
   } else {
     next();
   }
