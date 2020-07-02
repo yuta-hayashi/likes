@@ -5,8 +5,11 @@
     >
     <div v-if="isLoading" class="card_list">
       <SkeletonCard v-for="n in 3" :key="n" class="home_card" />
+      <router-link class="home_card" to="/add">
+        <Card imgUrl="/plus.png" :toBuy="false" size="small"
+      /></router-link>
     </div>
-    <div class="card_list">
+    <div v-else class="card_list">
       <div v-for="item in items" :key="item.id" @click="showMordal(item)">
         <Card :imgUrl="item.imgUrl" :toBuy="item.toBuy" size="small" />
       </div>
