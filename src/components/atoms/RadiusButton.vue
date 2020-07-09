@@ -44,5 +44,6 @@ export default class RadiusButton extends Vue {
   color: var(--dark);
   background-color: var(--back);
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  cursor: not-allowed;
 }
 </style>
