@@ -28,6 +28,7 @@ export default class RadiusButton extends Vue {
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   color: #ffff;
+  cursor: pointer;
 }
 
 .primary {
