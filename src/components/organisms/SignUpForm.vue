@@ -3,12 +3,12 @@
     <RadiusButton @push="signUpGoogle">Googleで認証</RadiusButton>
     <MessageBar v-show="message != ''">{{ message }}</MessageBar>
     <p class="sub_title">メールアドレスで認証</p>
-    <input type="text" class="input" placeholder="Mail" v-model="email" />
-    <input
-      type="password"
-      class="input"
+    <TextInput placeholder="Mail" :value="email" @input="email = $event" />
+    <TextInput
       placeholder="Password"
-      v-model="password"
+      type="password"
+      :value="password"
+      @input="password = $event"
     />
     <div class="button_group">
       <RadiusButton color="secondary" class="login" @push="signInMail">
@@ -27,11 +27,13 @@ import { Component, Vue } from "vue-property-decorator";
 import firebase from "@/firebase";
 import RadiusButton from "@/components/atoms/RadiusButton.vue";
 import MessageBar from "@/components/atoms/MessageBar.vue";
+import TextInput from "@/components/atoms/TextInput.vue";
 
 @Component({
   components: {
     MessageBar,
-    RadiusButton
+    RadiusButton,
+    TextInput
   }
 })
 export default class SignUpForm extends Vue {
