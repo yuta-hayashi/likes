@@ -14,6 +14,8 @@ const storage = firebase.storage;
 
 type newItem = { name: string; imgUrl: string; uid: string };
 type idState = { id: number; toBuy: boolean };
+type newName = { id: number; name: string };
+
 export interface InItemsState {
   items: Item[];
   nextId: number;
@@ -46,6 +48,14 @@ class Items extends VuexModule implements InItemsState {
       return item.id == idState.id;
     });
     target!.toBuy = idState.toBuy;
+  }
+
+  @Mutation
+  updateName(newName: newName) {
+    const target = this.items.find((item) => {
+      return item.id == newName.id;
+    });
+    target!.name = newName.name;
   }
 
   @Mutation
@@ -94,6 +104,20 @@ class Items extends VuexModule implements InItemsState {
   }
 
   @Action
+  changeName(newName: newName) {
+    this.updateName(newName);
+    ref
+      .doc(this.context.rootState.user.uid)
+      .collection("items")
+      .doc(newName.id.toString())
+      .update({ name: newName.name })
+      .then(() => {
+        console.log("updated");
+      })
+      .catch((error) => console.error(error));
+  }
+
+  @Action
   deleteItem(id: number) {
     const targetIndex = this.items.findIndex((item) => {
       return item.id == id;
@@ -126,9 +150,9 @@ class Items extends VuexModule implements InItemsState {
         snapshot.forEach((doc) => {
           this.pushItem(doc.data() as Item);
         });
-        if(this.items.length!=0){
+        if (this.items.length != 0) {
           const endElm = this.items.slice(-1)[0];
-        this.setNextId(endElm.id);
+          this.setNextId(endElm.id);
         }
         this.changeLoading();
       });

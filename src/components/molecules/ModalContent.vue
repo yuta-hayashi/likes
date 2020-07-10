@@ -5,7 +5,21 @@
       削除
     </RadiusButton>
     <Card class="card_big" :imgUrl="item.imgUrl" size="big" />
-    <span class="item_name">{{ item.name }}</span>
+    <div v-if="isEdit">
+      <TextInput
+        style="margin:0 10px 0 0;"
+        placeholder="Item Name"
+        :value="item.name"
+        @input="newName = $event"
+      />
+      <RadiusButton @push="updateName">上書き</RadiusButton>
+    </div>
+    <div v-else @click="isEdit = true">
+      <span class="item_name"
+        >{{ item.name }} <img class="edit_button" src="../../assets/ui/Edit.svg"
+      /></span>
+    </div>
+
     <RadiusButton color="primary" v-if="item.toBuy" @push="changeToBuy">
       買った
     </RadiusButton>
@@ -18,19 +32,25 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
+import { itemsModule } from "@/store/item";
+import Item from "@/models/Item";
 import Card from "@/components/atoms/Card.vue";
 import RadiusButton from "@/components/atoms/RadiusButton.vue";
 import BackButton from "@/components/atoms/BackButton.vue";
+import TextInput from "@/components/atoms/TextInput.vue";
 
 @Component({
   components: {
     Card,
     RadiusButton,
-    BackButton
+    BackButton,
+    TextInput
   }
 })
 export default class ModalContent extends Vue {
-  @Prop() item!: object;
+  @Prop() item!: Item;
+  isEdit = false;
+  newName = "";
 
   changeToBuy() {
     this.$emit("change-to-buy");
@@ -42,6 +62,11 @@ export default class ModalContent extends Vue {
 
   close() {
     this.$emit("close");
+  }
+
+  updateName() {
+    itemsModule.changeName({ id: this.item.id, name: this.newName });
+    this.isEdit = false;
   }
 }
 </script>
@@ -65,5 +90,8 @@ export default class ModalContent extends Vue {
   position: absolute;
   right: 0;
   margin: 15px 10px 0px auto;
+}
+.edit_button {
+  margin-bottom: -0.1em;
 }
 </style>
