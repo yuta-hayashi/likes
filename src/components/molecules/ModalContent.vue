@@ -26,6 +26,10 @@
     <RadiusButton color="secondary" v-else @push="changeToBuy">
       買う
     </RadiusButton>
+    <div class="buy_historys">
+      <p>購入履歴</p>
+      <BuyHistory :historys="item.history" />
+    </div>
     <br />
   </div>
 </template>
@@ -38,13 +42,15 @@ import Card from "@/components/atoms/Card.vue";
 import RadiusButton from "@/components/atoms/RadiusButton.vue";
 import BackButton from "@/components/atoms/BackButton.vue";
 import TextInput from "@/components/atoms/TextInput.vue";
+import BuyHistory from "@/components/atoms/BuyHistory.vue";
 
 @Component({
   components: {
     Card,
     RadiusButton,
     BackButton,
-    TextInput
+    TextInput,
+    BuyHistory
   }
 })
 export default class ModalContent extends Vue {
@@ -93,5 +99,9 @@ export default class ModalContent extends Vue {
 }
 .edit_button {
   margin-bottom: -0.1em;
+}
+.buy_historys {
+  max-height: 8em;
+  overflow: scroll;
 }
 </style>
