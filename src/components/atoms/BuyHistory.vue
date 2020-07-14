@@ -1,6 +1,8 @@
 <template>
   <div>
-    <p v-for="(history, index) in historys" :key="index">{{ history }}</p>
+    <p v-for="(history, index) in historys" :key="index">
+      {{ history.toDate() | dateFormat("YYYY.MM.DD") }}
+    </p>
   </div>
 </template>
 

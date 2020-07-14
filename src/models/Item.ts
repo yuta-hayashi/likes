@@ -4,5 +4,5 @@ export default interface Item {
   imgUrl: string;
   toBuy: boolean;
   createdAt: Date;
-  history: Date[];
+  history: object[];
 }

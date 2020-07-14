@@ -13,7 +13,7 @@ const ref = firebase.firestore().collection("userData");
 const storage = firebase.storage;
 
 type newItem = { name: string; imgUrl: string; uid: string };
-type idState = { id: number; toBuy: boolean; date: Date };
+type idState = { id: number; toBuy: boolean };
 type newName = { id: number; name: string };
 
 export interface InItemsState {
@@ -48,12 +48,6 @@ class Items extends VuexModule implements InItemsState {
       return item.id == idState.id;
     });
     target!.toBuy = idState.toBuy;
-    if (!idState.toBuy) {
-      if (target!.history == undefined) {
-        target!.history = [];
-      }
-      target!.history.push(idState.date);
-    }
   }
 
   @Mutation
@@ -98,8 +92,7 @@ class Items extends VuexModule implements InItemsState {
 
   @Action({ rawError: true })
   changeToBuy(idState: { id: number; toBuy: boolean }) {
-    const date = new Date();
-    this.changeStatus({ id: idState.id, toBuy: idState.toBuy, date: date });
+    const date = firebase.firestore.Timestamp.now();
     ref
       .doc(this.context.rootState.user.uid)
       .collection("items")
@@ -109,6 +102,26 @@ class Items extends VuexModule implements InItemsState {
         console.log("updated");
       })
       .catch((error) => console.error(error));
+
+    if (!idState.toBuy) {
+      const target = this.items.find((item) => {
+        return item.id == idState.id;
+      });
+      if (!target!.history) {
+        target!.history = [];
+      }
+      target!.history.push(date);
+      ref
+        .doc(this.context.rootState.user.uid)
+        .collection("items")
+        .doc(idState.id.toString())
+        .update({ history: target!.history })
+        .then(() => {
+          console.log("updated");
+        })
+        .catch((error) => console.error(error));
+    }
+    this.changeStatus({ id: idState.id, toBuy: idState.toBuy });
   }
 
   @Action
