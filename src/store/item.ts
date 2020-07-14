@@ -97,7 +97,7 @@ class Items extends VuexModule implements InItemsState {
   }
 
   @Action({ rawError: true })
-  changeToBuy(idState: idState) {
+  changeToBuy(idState: { id: number; toBuy: boolean }) {
     const date = new Date();
     this.changeStatus({ id: idState.id, toBuy: idState.toBuy, date: date });
     ref

@@ -52,7 +52,8 @@ export default class Home extends Vue {
     name: "",
     imgUrl: "",
     toBuy: false,
-    createdAt: new Date()
+    createdAt: new Date(),
+    history: []
   };
   get isLoading() {
     return itemsModule.isLoading;
