@@ -110,7 +110,7 @@ class Items extends VuexModule implements InItemsState {
       if (!target!.history) {
         target!.history = [];
       }
-      target!.history.push(date);
+      target!.history.unshift(date);
       ref
         .doc(this.context.rootState.user.uid)
         .collection("items")
