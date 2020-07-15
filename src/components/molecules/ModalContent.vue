@@ -103,5 +103,10 @@ export default class ModalContent extends Vue {
 .buy_historys {
   max-height: 8em;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.buy_historys::-webkit-scrollbar {
+  display: none;
 }
 </style>
